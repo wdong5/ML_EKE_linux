@@ -1,0 +1,4 @@
+8732:C 03 Aug 2021 22:57:16.858 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+8732:C 03 Aug 2021 22:57:16.858 # Redis version=6.0.8, bits=64, commit=03b59cd5, modified=0, pid=8732, just started
+8732:C 03 Aug 2021 22:57:16.858 # Configuration loaded
+8732:M 03 Aug 2021 22:57:16.859 # Could not create server TCP listening socket *:6815: bind: Address already in use
