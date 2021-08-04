@@ -13,7 +13,7 @@ mkdir -p build/gnu/ice_ocean_SIS2/repro/
 
 mkdir -p build/gnu/ocean_only/repro/
 (cd build/gnu/ocean_only/repro/; rm -f path_names; \
-../../../../src/mkmf/bin/list_paths -l ./ ../../../../src/MOM6/config_src/{dynamic,coupled_driver,external} ../../../../src/MOM6/src/{*,*/*}/; \
+../../../../src/mkmf/bin/list_paths -l ./ ../../../../src/MOM6/config_src/{dynamic,solo_driver,coupled_driver,external} ../../../../src/MOM6/src/{*,*/*}/; \
 ../../../../src/mkmf/bin/mkmf -t ../../../../src/mkmf/templates/linux-gnu.mk -o '-I../../shared/repro' -p MOM6 -l '-L../../shared/repro -lfms' path_names)
 (cd build/gnu/ocean_only/repro/; make clean; make NETCDF=4 REPRO=1 MOM6 -j)
 
