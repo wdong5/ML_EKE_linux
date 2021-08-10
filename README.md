@@ -2,9 +2,9 @@
 
 [![Input Dataset DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4682270.svg)](https://doi.org/10.5281/zenodo.4682270)
 
-# Using Machine Learning at Scale in HPC Simulations with SmartSim
+# Setup MOM6 environment on Linux system
 
-This project is code for the paper: Using Machine Learning at Scale in HPC Simulations with SmartSim
+This is a record to help people setup the environment with their on system and sucessfully reproduce the experiments of ML_EKE_linux (https://github.com/CrayLabs/NCAR_ML_EKE).
 
 # Reproduction
 
@@ -15,6 +15,10 @@ reproducibility is lacking or could be improved, please file an issue to let us 
 
 Below are the steps to install the various components needed to reproduce the
 results in the paper for the ML-EKE parameterization with SmartSim
+
+## My Environment
+GPUs: Nvidia V100
+python:3.7.5
 
 ### Clone
 
@@ -64,6 +68,8 @@ Go grab a coffee and wait for that to complete. If there are issues
 with the build, try sourcing the ``setup_env.sh`` script in SmartRedis
 and try the script again.
 
+After modification, I build the executable files of both the ocean_sis2 and the ocean_only.
+
 ### Download the MOM6 input data
 
 We host and include the input data we used to run MOM6 along with
@@ -82,29 +88,14 @@ Before running the SmartSim driver script, be sure that
 the computational setup described by the script suits your
 system. 
 
-This script assumes launching on a slurm cluster
-with at least
-   - 228 CPU nodes with 96 cpus (including hyperthreads)
-   - 16 nodes with P100 GPUs and 36 cpu cores (including hyperthreads)
-
-This can be changed to suit your system with the parameters
-listed below
-
-To run the exact same experiment as our paper, increase
-the time in both batch jobs and the number of days
-to 10 years. This is hopefully obvious how to do in the
-script.
-
 Once configured, the entire workload can be executed with
 
 ```bash
 cd driver
 python driver.py
 ```
-
-Note: this will submit two batch allocations to the scheduler
-of large size if configurations are not changed. To add account
-or other information please consult the [SmartSim API Docs](https://www.craylabs.org/build/html/api/smartsim_api.html#smartsim-api)
+See the updated driver.py file, and we use the "local" launcher instead.
+To add account or other information please consult the [SmartSim API Docs](https://www.craylabs.org/build/html/api/smartsim_api.html#smartsim-api)
 
 ## Results
 
