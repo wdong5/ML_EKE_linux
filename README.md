@@ -70,6 +70,7 @@ and try the script again.
 
 After modification, I build the executable files of both the ocean_sis2 and the ocean_only.
 
+
 ### Download the MOM6 input data
 
 We host and include the input data we used to run MOM6 along with
@@ -81,6 +82,32 @@ of the repo or [here](https://doi.org/10.5281/zenodo.4682270)
 Download the data into ``MOM6/INPUT``. The MOM6 input dataset
 pretrained models and scripts for the SmartSim workload are all
 included.
+
+### checke the dataset link of MOM6 SIS2 input
+```bash
+cd MOM6/INPUT
+ll .datasets
+du -s "WOA05_pottemp_salt.nc" 
+```
+please check if this links to a right position.
+
+### download special MOM6_SIS6 dataset
+```bash
+cd ../../; mkdir MOM6_SIS6_input; cd MOM6_SIS6_input;
+wget ftp://ftp.gfdl.noaa.gov/perm/Alistair.Adcroft/MOM6-testing/CORE.tgz;
+wgetftp://ftp.gfdl.noaa.gov/perm/Alistair.Adcroft/MOM6-testing/obs.tgz;
+wget ftp://ftp.gfdl.noaa.gov/perm/Alistair.Adcroft/MOM6-testing/obs.woa13.tgz;
+wget ftp://ftp.gfdl.noaa.gov/perm/Alistair.Adcroft/MOM6-testing/OM4_025.tgz;
+tar xvzf obs.woa13.tgz;
+tar xvzf OM4_025.tgz;
+tar xvzf obs.woa13.tgz;
+tar xvzf obs.tgz;
+cd ./MOM6/INPUT/
+rm .datasets
+ln -s ../../MOM5_INPUT .datasets
+ll .datasets
+```
+
 
 ## Run
 
@@ -96,6 +123,19 @@ python driver.py
 ```
 See the updated driver.py file, and we use the "local" launcher instead.
 To add account or other information please consult the [SmartSim API Docs](https://www.craylabs.org/build/html/api/smartsim_api.html#smartsim-api)
+
+## Check
+some useful commands to test the status of Smartsim and Smartredis
+```bash
+ps aux | grep redis-server
+export SSDB="localhost:6704"
+```
+
+A few important files in MOM6 simulation
+```bash
+MOM_parameter_doc.short
+MOM_override
+```
 
 ## Results
 
