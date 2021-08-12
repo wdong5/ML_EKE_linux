@@ -104,7 +104,7 @@ tar xvzf obs.woa13.tgz;
 tar xvzf obs.tgz;
 cd ./MOM6/INPUT/
 rm .datasets
-ln -s ../../MOM5_INPUT .datasets
+ln -s ../../../MOM5_INPUT .datasets
 ll .datasets
 ```
 
@@ -123,6 +123,15 @@ python driver.py
 ```
 See the updated driver.py file, and we use the "local" launcher instead.
 To add account or other information please consult the [SmartSim API Docs](https://www.craylabs.org/build/html/api/smartsim_api.html#smartsim-api)
+
+If you can not run "driver.py" with smartredis directly, you're good to try below (make sure block= Flase in experiment.start):
+
+```bash
+python driver.py
+cd ./driver/AI-EKE-MOM6/MOM/MOM_0/
+mpirun -n 16 /home/dongw/org_NCAR_ML_EKE/MOM6/build/gnu/ice_ocean_SIS2/repro/MOM6
+```
+
 
 ## Check
 some useful commands to test the status of Smartsim and Smartredis
